@@ -4,12 +4,12 @@ require_once '../db.php';
 $id = $_GET['id'] ?? null;
 if (!$id) { die("Invalid ID"); }
 
-// 1. Purana data fetch karna
+
 $stmt = $pdo->prepare("SELECT * FROM posts WHERE id = ?");
 $stmt->execute([$id]);
 $post = $stmt->fetch();
 
-// 2. Agar Form Submit hua toh Update karna
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -28,4 +28,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <textarea name="content" rows="10" cols="50" required><?php echo htmlspecialchars($post['content']); ?></textarea><br><br>
     <button type="submit">Update Post</button>
 </form>
+
 <a href="dashboard.php">Cancel</a>
