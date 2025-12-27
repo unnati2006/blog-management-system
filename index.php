@@ -1,7 +1,6 @@
 <?php
 require_once 'db.php';
 
-// 1. Fetch all posts from the database (newest first)
 $query = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC");
 $posts = $query->fetchAll();
 ?>
@@ -36,4 +35,5 @@ $posts = $query->fetchAll();
     <?php endif; ?>
 
 </body>
+
 </html>
