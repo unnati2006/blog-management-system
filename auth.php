@@ -1,8 +1,11 @@
 <?php
-session_start();
-// Agar session mein user_id nahi hai, toh login par bhej do
-if (!isset($_SESSION['user_id'])) {
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 ?>
