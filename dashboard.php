@@ -1,10 +1,11 @@
 <?php
+require_once 'auth.php';
 require_once '../db.php';
 
 $stmt = $pdo->query("SELECT id, title, created_at FROM posts ORDER BY created_at DESC");
 $posts = $stmt->fetchAll();
 ?>
-
+<link rel="stylesheet" href="../css/style.css">
 <h1>Admin Dashboard</h1>
 <a href="create.php">+ Create New Post</a> | <a href="../index.php">View Site</a>
 <hr>
@@ -25,4 +26,5 @@ $posts = $stmt->fetchAll();
         </td>
     </tr>
     <?php endforeach; ?>
+
 </table>
