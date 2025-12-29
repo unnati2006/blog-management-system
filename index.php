@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 
+
 $query = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC");
 $posts = $query->fetchAll();
 ?>
@@ -8,6 +9,7 @@ $posts = $query->fetchAll();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <title>My Personal Blog</title>
     <style>
@@ -17,23 +19,22 @@ $posts = $query->fetchAll();
     </style>
 </head>
 <body>
-    <h1>Welcome to My Blog</h1>
-    <a href="admin/create.php">+ Write New Post</a>
-    <hr>
+    <div class="container">
+    <header>
+        <div class="container">
+            <span class="logo">My Personal Blog</span>
+        </div>
+    </header>
 
-    <?php if (empty($posts)): ?>
-        <p>No posts yet. Go to the admin panel to write your first one!</p>
-    <?php else: ?>
-        <?php foreach ($posts as $post): ?>
-            <div class="post">
-                <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                <p class="date">Posted on: <?php echo $post['created_at']; ?></p>
-                <p><?php echo nl2br(htmlspecialchars(substr($post['content'], 0, 150))); ?>...</p>
-                <a href="post.php?id=<?php echo $post['id']; ?>">Read Full Post</a>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-
+    <?php foreach($posts as $post): ?>
+        <div class="post-card">
+            <h2><?php echo $post['title']; ?></h2>
+            <p><?php echo substr($post['content'], 0, 150); ?>...</p>
+            <br>
+            <a href="post.php?id=<?php echo $post['id']; ?>" class="btn">Read More</a>
+        </div>
+    <?php endforeach; ?>
+</div>
 </body>
-
+</html>
 </html>
