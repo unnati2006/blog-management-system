@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
     <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
     <div style="max-width: 300px; margin: 100px auto;">
@@ -39,3 +41,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 </html>
+
